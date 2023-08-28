@@ -1,4 +1,4 @@
-const wordArray = [
+const words: string[] = [
     'abruptly',
     'absurd',
     'abyss',
@@ -216,3 +216,5 @@ const wordArray = [
     'zillion',
     'zaftig'
 ]
+
+export default words
