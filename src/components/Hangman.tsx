@@ -1,9 +1,53 @@
 function Hangman() {
+    //body parts 
+    const head = (
+        <div 
+            className="w-12 h-12 rounded-full border-4 border-black absolute top-16 right-[-14px]"
+        />
+    )
+
+    const body = (
+        <div 
+            className="w-1 h-28 bg-black absolute top-28 right-2"
+        />
+    )
+
+    const right_arm = (
+        <div 
+            className="w-1 h-16 bg-black absolute top-24 -right-4 rotate-45"
+        />
+    )
+
+    const left_arm = (
+        <div 
+            className="w-1 h-16 bg-black absolute top-24 right-8 -rotate-45"
+        />
+    )
+
+    const right_leg = (
+        <div 
+            className="w-1 h-16 bg-black absolute top-52 -right-4 rotate-[135deg]"
+        />
+    )
+
+    const left_leg = (
+        <div 
+            className="w-1 h-16 bg-black absolute top-52 right-8 -rotate-[135deg]"
+        />
+    )
+
     return (
         <div
             className="relative"
         >
-            {/* small overhang where the body will hang */}
+            {head}
+            {body}
+            {right_arm}
+            {left_arm}
+            {right_leg}
+            {left_leg}
+
+            {/* small vertical line where the body will hang */}
             <div 
                 className="h-16 w-5 bg-black absolute top-0 right-0"
             />

@@ -14,9 +14,11 @@ function App() {
         <div
             className='bg-slate-300 text-2xl flex flex-col items-center justify-center h-screen w-screen'
         >
-            <h1>Welcome to hangman!</h1>
-            
-            <Hangman />
+            <div
+                className='bg-white p-10 rounded-lg'
+            >           
+                <Hangman />
+            </div>
         </div>
     )
 }
