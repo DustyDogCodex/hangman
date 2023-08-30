@@ -1,4 +1,8 @@
-function Hangman() {
+export interface Props {
+    numGuesses: number
+}
+
+function Hangman(props: Props) {
     //body parts 
     const head = (
         <div 
@@ -36,17 +40,15 @@ function Hangman() {
         />
     )
 
+    //body parts array
+    const bodyParts = [ head, body, right_arm, left_arm, right_leg, left_leg ]
+
     return (
         <div
             className="relative"
         >
             {/* body parts conditionally rendered based on user's progress */}
-            {head}
-            {body}
-            {right_arm}
-            {left_arm}
-            {right_leg}
-            {left_leg}
+            {bodyParts.slice(0, props.numGuesses)}
 
             {/* gallows */}
             {/* small vertical line where the body will hang */}

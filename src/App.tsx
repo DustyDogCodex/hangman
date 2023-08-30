@@ -10,7 +10,9 @@ function App() {
     const [ word, setWord ] = useState<string>(words[Math.floor(Math.random() * words.length)])
 
     //array for storing words that have already been used. This is to prevent duplicate words from being used in game.
-    const [ guessedWords, setGuessedWords ] = useState<string[]>([])
+    const [ usedLetters, setUsedLetters ] = useState<string[]>([])
+
+    let wrongGuesses = usedLetters.filter(letter => !word.includes(letter))
 
     return (
         <div
@@ -19,10 +21,10 @@ function App() {
             <div
                 className='bg-white p-10 rounded-lg'
             >           
-                <Hangman />
+                <Hangman numGuesses={usedLetters.length} />
                 <Word word={word} />
             </div>
-            <Keyboard />
+            <Keyboard usedLetters={usedLetters} />
         </div>
     )
 }
