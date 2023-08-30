@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import words from './ListOfWords.js'
 import Hangman from './components/Hangman.js'
+import Word from './components/Word.js'
+import Keyboard from './components/Keyboard.js'
 
 function App() {
     //choosing a random word to be guessed
@@ -18,7 +20,9 @@ function App() {
                 className='bg-white p-10 rounded-lg'
             >           
                 <Hangman />
+                <Word word={word} />
             </div>
+            <Keyboard />
         </div>
     )
 }
