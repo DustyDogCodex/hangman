@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import words from './ListOfWords.js'
 import Hangman from './components/Hangman.js'
@@ -14,6 +14,32 @@ function App() {
 
     let wrongGuesses = usedLetters.filter(letter => !word.includes(letter))
 
+    function addUsedLetter(letter: string){
+        //if user has selected this letter already, ignore keypress
+        if (usedLetters.includes(letter)) return
+
+        setUsedLetters(usedLetters => [ ...usedLetters, letter ])
+    }
+
+    //event listeners for key presses
+    useEffect(() => {
+        //handler function for key press
+        const handleKeyPress = (ev: KeyboardEvent) => {
+            const selectedKey = ev.key
+
+            //ignoring all keys that are not a letter key
+            if(!selectedKey.match(/^[a-z]$/)) return
+
+            ev.preventDefault()
+            addUsedLetter(selectedKey)
+        }
+
+        //add event listener for key press
+        document.addEventListener("keypress", handleKeyPress)
+
+        return () => { document.removeEventListener('keypress', handleKeyPress)}
+    }, [])
+
     return (
         <div
             className='bg-slate-300 text-2xl flex flex-col items-center justify-center h-screen w-screen'
@@ -21,8 +47,8 @@ function App() {
             <div
                 className='bg-white p-10 rounded-lg'
             >           
-                <Hangman numGuesses={usedLetters.length} />
-                <Word word={word} />
+                <Hangman numGuesses={wrongGuesses.length} />
+                <Word word={word} usedLetters={usedLetters} />
             </div>
             <Keyboard usedLetters={usedLetters} />
         </div>
