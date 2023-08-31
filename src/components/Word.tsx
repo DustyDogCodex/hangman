@@ -1,21 +1,21 @@
-//props interface
-export interface Props {
+//props object
+type Props = {
     word: string,
     usedLetters: string[]
 }
 
-function Word(props: Props) {
+function Word({ word, usedLetters }: Props) {
     return (
         <div
             className="mt-5 text-5xl flex items-center justify-center gap-2 font-bold"
         >
-            {props.word.split('').map((letter: string, index: number) => 
+            {word.split('').map((letter: string, index: number) => 
                 <div
-                    className="w-12 border-b-4 border-black"
+                    className="w-12 border-b-4 border-black flex items-center justify-center"
                 >
                     <span 
                         key={index} 
-                        className={`${ props.usedLetters?.includes(letter) ? 'visible' : 'invisible' } `}
+                        className={`${ usedLetters?.includes(letter) ? 'visible' : 'invisible' } `}
                     >
                         {letter.toUpperCase()}
                     </span>
