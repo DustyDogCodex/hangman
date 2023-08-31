@@ -37,7 +37,7 @@ type Props = {
 function Keyboard({ usedLetters, addUsedLetter, disabled = false }: Props) {
     return (
         <div
-            className="mt-5 flex flex-wrap items-center justify-center gap-4 lg:w-2/5"
+            className="mt-5 flex flex-wrap items-center justify-center gap-4 lg:w-4/5 xl:w-2/5"
         >
             {/* styling for buttons is conditional on whether the letter is in usedLetters array and if keyboard is disabled */}
             {KEYS.map((letter, index) => 
