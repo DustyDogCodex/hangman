@@ -6,36 +6,42 @@ function Hangman({ numGuesses }: Props) {
     //body parts 
     const head = (
         <div 
+            key={1}
             className="w-12 h-12 rounded-full border-4 border-white absolute top-10 md:top-16 right-[-20px] md:right-[-14px]"
         />
     )
 
     const body = (
         <div 
+            key={2}
             className="w-1 h-28 bg-white absolute top-[84px] md:top-28 right-0 md:right-2"
         />
     )
 
     const right_arm = (
-        <div 
+        <div
+            key={3} 
             className="w-1 h-16 bg-white absolute top-20 md:top-24 -right-6 md:-right-4 rotate-45"
         />
     )
 
     const left_arm = (
         <div 
+            key={4}
             className="w-1 h-16 bg-white absolute top-20 md:top-24 right-6 md:right-8 -rotate-45"
         />
     )
 
     const right_leg = (
         <div 
+            key={5}
             className="w-1 h-12 bg-white absolute top-[188px] md:top-52 -right-4 md:-right-2 rotate-[135deg]"
         />
     )
 
     const left_leg = (
         <div 
+            key={6}
             className="w-1 h-12 bg-white absolute top-[188px] md:top-52 right-4 md:right-6 -rotate-[135deg]"
         />
     )

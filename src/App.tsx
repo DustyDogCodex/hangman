@@ -37,10 +37,10 @@ function App() {
             const selectedKey = ev.key
 
             //ignoring all keys that are not a letter key
-            if(!selectedKey.match(/^[a-z]$/)) return
+            if(!selectedKey.match(/^[a-z,A-Z]$/)) return
 
             ev.preventDefault()
-            addUsedLetter(selectedKey)
+            addUsedLetter(selectedKey.toLowerCase())
         }
 
         //add event listener for key press
@@ -65,6 +65,7 @@ function App() {
             {winner && (
                 <WinLoseMessage winMessage={true} newGame={newGame} />
             )}
+            {/* what is the point of winning if you don't have a little confetti to celebrate?? */}
             {winner && <Confetti />}
 
             {/* component with hangman drawing */}  
