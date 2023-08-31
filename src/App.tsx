@@ -7,16 +7,19 @@ import Keyboard from './components/Keyboard.js'
 import Confetti from 'react-confetti'
 
 function App() {
-    //choosing a random word to be guessed
-    const [ word, setWord ] = useState<string>(words[Math.floor(Math.random() * words.length)])
+    //randomly selecting a new word
+    let newWord: string = words[Math.floor(Math.random() * words.length)]
 
-    //array for storing words that have already been used. This is to prevent duplicate words from being used in game.
+    //choosing a random word to be guessed
+    const [ word, setWord ] = useState<string>(newWord)
+
+    //array for storing letters that have already been used
     const [ usedLetters, setUsedLetters ] = useState<string[]>([])
 
     let wrongGuesses = usedLetters.filter(letter => !word.includes(letter))
 
     //determine game win or lose state
-    const loser = /* wrongGuesses.length >= 6 */ true
+    const loser = wrongGuesses.length >= 6
     const winner = word.split('').every(letter => usedLetters.includes(letter))
     
     const addUsedLetter = useCallback((letter: string) => {
@@ -52,10 +55,13 @@ function App() {
             {/* win/lose message display */}
             {loser && (
                 <>
-                    <h1 className='text-red-500 text-3xl font-bold mb-5'>Sorry you lost! :(</h1>
+                    <h1 className='text-red-500 text-3xl font-bold mb-5'>Sorry you lost! 😿</h1>
                     <button 
                         className='bg-sky-400 text-white px-4 py-1 rounded-full mb-5'
-                        onClick={() => window.location.reload()}
+                        onClick={() => { 
+                            setWord(newWord)
+                            setUsedLetters([])
+                        }}
                     >
                         Restart
                     </button>
@@ -63,10 +69,13 @@ function App() {
             )}
             {winner && (
                 <>
-                    <h1 className='text-green-500 text-3xl font-bold mb-3'>Congrats you won!</h1>
+                    <h1 className='text-green-500 text-3xl font-bold mb-3'>Congrats you won! 😸</h1>
                     <button 
                         className='bg-sky-400 text-white px-4 py-1 rounded-full mb-5'
-                        onClick={() => window.location.reload()}
+                        onClick={() => { 
+                            setWord(newWord)
+                            setUsedLetters([])
+                        }}
                     >
                         New Game
                     </button>
@@ -78,7 +87,11 @@ function App() {
             <Hangman numGuesses={wrongGuesses.length} />
 
             {/* word to be guessed */}   
-            <Word word={word} usedLetters={usedLetters} />
+            <Word 
+                word={word} 
+                usedLetters={usedLetters} 
+                showWord={loser}
+            />
             
             {/* keyboard with keys that can be selected through clicking or pressing respective key on keyboard */}
             <Keyboard 
