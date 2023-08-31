@@ -28,7 +28,8 @@ const KEYS: string[] = [
 ]
 
 export interface Props {
-    usedLetters: string[]
+    usedLetters: string[],
+    addUsedLetter: (letter: string) => void
 }
 
 function Keyboard(props: Props) {

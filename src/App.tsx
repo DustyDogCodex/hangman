@@ -37,20 +37,16 @@ function App() {
         //add event listener for key press
         document.addEventListener("keypress", handleKeyPress)
 
-        return () => { document.removeEventListener('keypress', handleKeyPress)}
+        return () => { document.removeEventListener('keypress', handleKeyPress) }
     }, [])
 
     return (
         <div
             className='bg-slate-300 text-2xl flex flex-col items-center justify-center h-screen w-screen'
-        >
-            <div
-                className='bg-white p-10 rounded-lg'
-            >           
-                <Hangman numGuesses={wrongGuesses.length} />
-                <Word word={word} usedLetters={usedLetters} />
-            </div>
-            <Keyboard usedLetters={usedLetters} />
+        >           
+            <Hangman numGuesses={wrongGuesses.length} />   
+            <Word word={word} usedLetters={usedLetters} />
+            <Keyboard usedLetters={usedLetters} addUsedLetter={addUsedLetter} />
         </div>
     )
 }
