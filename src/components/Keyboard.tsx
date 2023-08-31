@@ -37,14 +37,15 @@ type Props = {
 function Keyboard({ usedLetters, addUsedLetter, disabled = false }: Props) {
     return (
         <div
-            className="mt-5 flex flex-wrap items-center justify-center gap-2"
+            className="mt-5 flex flex-wrap items-center justify-center gap-4 lg:w-2/5"
         >
+            {/* styling for buttons is conditional on whether the letter is in usedLetters array and if keyboard is disabled */}
             {KEYS.map((letter, index) => 
                 <button 
                     key={index} 
                     onClick={() => addUsedLetter(letter)}
                     disabled={disabled}
-                    className={`m-2 ${usedLetters?.includes(letter) || disabled ? 'bg-gray-600 text-black/60' : 'bg-violet-800 text-orange-500 hover:scale-125 transition duration-300' } text-4xl h-16 w-16 rounded-lg`}
+                    className={`${usedLetters?.includes(letter) || disabled ? 'bg-gray-600 text-black/60' : 'bg-sky-400 text-amber-400 hover:scale-125 transition duration-300' } text-2xl md:text-4xl h-12 md:h-16 w-12 md:w-16 rounded-lg`}
                 >
                     {letter.toUpperCase()}
                 </button>

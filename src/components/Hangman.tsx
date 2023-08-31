@@ -48,7 +48,7 @@ function Hangman({ numGuesses }: Props) {
             className="relative mt-10"
         >
             {/* body parts conditionally rendered based on user's progress */}
-            {bodyParts.slice(0, /* numGuesses */ 6)}
+            {bodyParts.slice(0, numGuesses)}
 
             {/* gallows */}
             {/* small vertical line where the body will hang */}

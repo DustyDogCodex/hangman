@@ -5,6 +5,7 @@ import Hangman from './components/Hangman.js'
 import Word from './components/Word.js'
 import Keyboard from './components/Keyboard.js'
 import Confetti from 'react-confetti'
+import WinLoseMessage from './components/WinLoseMessage.js'
 
 function App() {
     //randomly selecting a new word
@@ -19,7 +20,7 @@ function App() {
     let wrongGuesses = usedLetters.filter(letter => !word.includes(letter))
 
     //determine game win or lose state
-    const loser = wrongGuesses.length >= 6
+    const loser = wrongGuesses.length >= 6 
     const winner = word.split('').every(letter => usedLetters.includes(letter))
     
     const addUsedLetter = useCallback((letter: string) => {
@@ -48,38 +49,21 @@ function App() {
         return () => { document.removeEventListener('keypress', handleKeyPress) }
     }, [])
 
+    function newGame(){
+        setWord(newWord)
+        setUsedLetters([])
+    }
+
     return (
         <div
             className='bg-black text-2xl flex flex-col items-center justify-center min-h-screen h-full w-screen'
         >         
             {/* win/lose message display */}
             {loser && (
-                <>
-                    <h1 className='text-red-500 text-3xl font-bold mb-5'>Sorry you lost! 😿</h1>
-                    <button 
-                        className='bg-sky-400 text-white px-4 py-1 rounded-full mb-5'
-                        onClick={() => { 
-                            setWord(newWord)
-                            setUsedLetters([])
-                        }}
-                    >
-                        Restart
-                    </button>
-                </>
+                <WinLoseMessage winMessage={false} newGame={newGame} />
             )}
             {winner && (
-                <>
-                    <h1 className='text-green-500 text-3xl font-bold mb-3'>Congrats you won! 😸</h1>
-                    <button 
-                        className='bg-sky-400 text-white px-4 py-1 rounded-full mb-5'
-                        onClick={() => { 
-                            setWord(newWord)
-                            setUsedLetters([])
-                        }}
-                    >
-                        New Game
-                    </button>
-                </>
+                <WinLoseMessage winMessage={true} newGame={newGame} />
             )}
             {winner && <Confetti />}
 
