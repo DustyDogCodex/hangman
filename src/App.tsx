@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import words from './ListOfWords.js'
 import Hangman from './components/Hangman.js'
@@ -13,13 +13,13 @@ function App() {
     const [ usedLetters, setUsedLetters ] = useState<string[]>([])
 
     let wrongGuesses = usedLetters.filter(letter => !word.includes(letter))
-
-    function addUsedLetter(letter: string){
+    
+    const addUsedLetter = useCallback((letter: string) => {
         //if user has selected this letter already, ignore keypress
         if (usedLetters.includes(letter)) return
 
         setUsedLetters(usedLetters => [ ...usedLetters, letter ])
-    }
+    }, [ usedLetters ])
 
     //event listeners for key presses
     useEffect(() => {
