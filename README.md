@@ -5,6 +5,12 @@
 </p>
 
 <p align='center'>
+    <img height="32" width="32" src="https://cdn.simpleicons.org/typescript"/>
+    <img height="32" width="32" src="https://cdn.simpleicons.org/react"/>
+    <img height="32" width="32" src="https://cdn.simpleicons.org/tailwindcss"/>
+</p>
+
+<p align='center'>
     <a href='https://main--famous-kringle-785f56.netlify.app/' target='_blank'>LIVE DEMO</a>
 </p>
 
