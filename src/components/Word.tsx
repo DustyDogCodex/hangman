@@ -12,11 +12,11 @@ function Word({ word, usedLetters, showWord }: Props) {
         >
             {word.split('').map((letter: string, index: number) => 
                 <div
-                    className="w-12 border-b-4 border-black flex items-center justify-center"
+                    className="w-12 border-b-4 border-violet-800 flex items-center justify-center"
                 >
                     <span 
                         key={index} 
-                        className={`${ usedLetters?.includes(letter) || showWord ? 'visible' : 'invisible' } ${ !usedLetters?.includes(letter) && showWord ? 'text-red-600' : '' }`}
+                        className={`${ usedLetters?.includes(letter) || showWord ? 'visible' : 'invisible' } ${ !usedLetters?.includes(letter) && showWord ? 'text-red-600' : 'text-lime-300' }`}
                     >
                         {letter.toUpperCase()}
                     </span>

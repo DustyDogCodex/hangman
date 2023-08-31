@@ -50,7 +50,7 @@ function App() {
 
     return (
         <div
-            className='bg-slate-300 text-2xl flex flex-col items-center justify-center min-h-screen h-full w-screen'
+            className='bg-black text-2xl flex flex-col items-center justify-center min-h-screen h-full w-screen'
         >         
             {/* win/lose message display */}
             {loser && (
